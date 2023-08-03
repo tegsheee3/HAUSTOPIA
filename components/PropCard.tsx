@@ -29,7 +29,7 @@ const PropCard = ({ property }: PropCardProps) => {
             alt="Property Image"
             fill
             priority
-            objectFit={'contain'}
+            style={{objectFit:"contain"}}
           />
       </div>
 
@@ -42,17 +42,17 @@ const PropCard = ({ property }: PropCardProps) => {
         
         <div className="flex items-start flex-row justify-start p-2 gap-2">
           <Image src="/bed.png" width={20} height={20} alt="bedrooms" />
-          {property.description.beds}
+          {property.description.beds || "0"}
         </div>
 
         <div className="flex items-start flex-row justify-start p-2 gap-2 ">
           <Image src="/size.png" width={20} height={20} alt="squareFootage" />
-          {property.description.sqft}
+          {property.description.sqft || "0"}
         </div>        
 
         <div className="flex items-start flex-row justify-start p-2 gap-2">
           <Image src="/bath.png" width={20} height={20} alt="bathrooms" />
-          {property.description.baths}
+          {property.description.baths || "0"}
         </div>
 
         
