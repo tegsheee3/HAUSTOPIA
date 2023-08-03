@@ -5,9 +5,7 @@ import Hero from "./Hero";
 import About from "./About";
 import Contact from "./Contact";
 import PropCard from "./PropCard";
-import Results from "./Results";
-import Searchbar from "./Searchbar";
-import { Catalogue } from "./Catalogue";
+import { Main } from "./Main";
 
 export {
   Hero,
@@ -17,7 +15,5 @@ export {
   About,
   Contact,
   PropCard,
-  Results,
-  Searchbar,
-  Catalogue
+  Main
 };

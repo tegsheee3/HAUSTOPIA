@@ -3,15 +3,15 @@
 import Contact from "@components/Contact";
 import About from "@components/About";
 import { Hero } from "@components";
-import Catalogue from "@components/Catalogue";
+import Main from "@components/Main";
 
 
 export default async function Home() {
   
   return (
-    <main >
+    <main>
       <Hero/>
-      <Catalogue />
+      <Main />
       <About/>
       <Contact/>
     </main>

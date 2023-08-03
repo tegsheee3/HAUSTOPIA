@@ -9,12 +9,12 @@ import { ApiResponse, Property } from "@types";
 
 const resultsPerPage = 12;
 
-export const Catalogue = () => {
+export const Main = () => {
   const [properties, setProperties] = useState<Property[]>([]);;
   const [offset, setOffset] = useState<number>(0);
-  const [selectedState, setSelectedState] = useState<string>("MI");
+  const [selectedState, setSelectedState] = useState<string>("");
   const [selectedProperty_type, setSelectedProperty_type] = useState<string>("");
-  const [cityName, setCityName] = useState<string>("Detroit");
+  const [cityName, setCityName] = useState<string>("");
   const [beds_min, setBeds_min] = useState<string>("");
   const [beds_max, setBeds_max] = useState<string>("");
   const [location, setLocation] = useState<string>("");
@@ -59,9 +59,8 @@ export const Catalogue = () => {
     <div className="p-10 bg-blue-100" id="discover">
       <h2 className="text-4xl font-bold mb-0 pb-3 px-5">Suchen</h2>
       {/*Searchbar*/}
-      <div className="py-4 border-2 border-gray-400 rounded-md  shadow-lg ">
-        <div className="flex flex-col gap-4 items-center justify-center">
-          <div className="flex flex-row flex-wrap gap-4">
+      <div className="p-4 border-2 border-gray-400 rounded-md  shadow-lg ">
+        <div className="flex flex-row flex-wrap gap-4 items-center justify-center">
             <select
               value={selectedState}
               onChange={(e) => {
@@ -70,7 +69,7 @@ export const Catalogue = () => {
               required
               className="px-4 py-2 border border-gray-300 rounded-md w-[275px]"
             >
-              <option value="">Land*</option>
+              <option value="" disabled selected>USA Bundesstaat</option>
               {Object.entries(usaStates).map(([stateName, stateAbbr]) => (
                 <option key={stateAbbr} value={stateAbbr}>
                   {stateName}
@@ -102,15 +101,14 @@ export const Catalogue = () => {
               }}
               className="px-4 py-2 border border-gray-300 rounded-md w-[275px]"
             >
+              <option value="" disabled selected>Immobilienart</option>
               {Object.entries(propertyTypes).map(([value, text]) => (
                 <option key={value} value={value}>
                   {text}
                 </option>
               ))}
             </select>
-          </div>
 
-          <div className="flex flex-row flex-wrap gap-4">
             <input
               type="text"
               value={beds_max}
@@ -144,7 +142,6 @@ export const Catalogue = () => {
             >
               Search
             </button>
-          </div>
         </div>
       </div>
 
@@ -155,7 +152,10 @@ export const Catalogue = () => {
 
         <div className="flex flex-row flex-wrap justify-around">
         {properties.length === 0 ? (
-          <p className="text-left text-2xl p-10 ">Es wurden keine Suchergebnisse gefunden.</p>
+          <div className="flex flex-row items-center">
+          <p className="text-left text-2xl py-5 ">Es wurden keine Suchergebnisse gefunden.</p>
+          <img src="magGlas.png" width={40} height={40}/>
+          </div>
         ) : (
           properties.map((property) => <PropCard property={property} />)
         )}
@@ -186,4 +186,4 @@ export const Catalogue = () => {
   );
 };
 
-export default Catalogue;
+export default Main;

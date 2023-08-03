@@ -52,7 +52,6 @@ export const usaStates: { [stateName: string]: string } = {
 };
 
 export const propertyTypes = {
-  "":"Immobilienart",
   "single_family": "Einfamilienhaus",
   "multi_family": "Mehrfamilienhaus",
   "mobile": "Mobilheim",
