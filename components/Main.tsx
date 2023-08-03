@@ -7,7 +7,7 @@ import { fetchProperty } from "@/utils/fetchProp";
 import PropCard from "./PropCard";
 import { ApiResponse, Property } from "@types";
 
-const resultsPerPage = 12;
+
 
 export const Main = () => {
   const [properties, setProperties] = useState<Property[]>([]);;
@@ -19,6 +19,7 @@ export const Main = () => {
   const [beds_max, setBeds_max] = useState<string>("");
   const [location, setLocation] = useState<string>("");
   const [sort, setSort] = useState<string>("newest");
+  const resultsPerPage = 12;
 
   const handleSearch = async () => {
     try {
@@ -33,7 +34,7 @@ export const Main = () => {
         limit: resultsPerPage,
         sort: sort,
       });
-      setProperties(results.data.home_search.results);
+        setProperties(results.data.home_search.results);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -42,11 +43,13 @@ export const Main = () => {
   const handlePreviousClick = () => {
     const newOffset = Math.max(0, offset - resultsPerPage);
     setOffset(newOffset);
+    handleSearch()
   };
 
   const handleNextClick = () => {
     const newOffset = offset + resultsPerPage;
     setOffset(newOffset);
+    handleSearch()
   };
 
 useEffect(() => {
@@ -69,7 +72,7 @@ useEffect(() => {
               required
               className="px-4 py-2 border border-gray-300 rounded-md w-[275px]"
             >
-              <option value="" disabled selected>USA Bundesstaat</option>
+              <option value="" disabled>USA Bundesstaat</option>
               {Object.entries(usaStates).map(([stateName, stateAbbr]) => (
                 <option key={stateAbbr} value={stateAbbr}>
                   {stateName}
@@ -101,7 +104,7 @@ useEffect(() => {
               }}
               className="px-4 py-2 border border-gray-300 rounded-md w-[275px]"
             >
-              <option value="" disabled selected>Immobilienart</option>
+              <option value="" disabled >Immobilienart</option>
               {Object.entries(propertyTypes).map(([value, text]) => (
                 <option key={value} value={value}>
                   {text}

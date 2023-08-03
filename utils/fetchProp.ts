@@ -11,7 +11,7 @@ export async function fetchProperty(filters: PropertyFilterProps) {
   const testUrl="https://us-real-estate.p.rapidapi.com/v3/for-sale?state_code=MI&city=Detroit&location=50993&limit=42&property_type=Mobile&sort=lowest_price&beds_max=2&beds_min=5&offset=0"
 
   let url = "https://us-real-estate.p.rapidapi.com/v3/for-sale?";
-  if (state_code) url += `state_code=${state_code}&`;
+  if (state_code){ url += `state_code=${state_code}&`} else {url+=`state_code=MI&`};
   if (city) url += `city=${city}&`;
   if (location) url += `location=${location}&`;
   if (limit) url += `limit=${limit}&`;

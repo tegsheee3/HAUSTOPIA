@@ -24,35 +24,13 @@ const PropCard = ({ property }: PropCardProps) => {
     <div
       className="relative flex flex-col p-3 m-3 justify-start items-start text-black-100 bg-white shadow-md hover:shadow-xl rounded-2xl border border-blue-400 group pop-up w-[325px]">
       <div className="relative w-full h-40 my-3 justify-start">
-        {/* Check if multiple photos are available */}
-        {property.photos?.length > 1 ? (
-          <Carousel
-            showStatus={false}
-            showThumbs={false}
-            showIndicators={false}
-            dynamicHeight={false}
-          >
-            {/* Map over all the photos and create Image elements */}
-            {property.photos?.map((photo, index) => (
-              <div key={index}>
-                <Image
-                  src={photo.href || "/defaultHouse.jpg"}
-                  alt={`Property Image ${index + 1}`}
-                  priority
-                  fill
-                />
-              </div>
-            ))}
-          </Carousel>
-        ) : (
-          // Only one or no photos, display the single image or default image
           <Image
             src={property.primary_photo?.href || "/defaultHouse.jpg"}
             alt="Property Image"
             fill
             priority
+            objectFit={'contain'}
           />
-        )}
       </div>
 
       <div className="grid grid-cols-2 w-full text-[16px] gap-x-8">
