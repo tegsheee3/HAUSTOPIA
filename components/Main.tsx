@@ -49,9 +49,9 @@ export const Main = () => {
     setOffset(newOffset);
   };
 
-/*useEffect(() => {
+useEffect(() => {
     handleSearch();
-  }, []);*/
+  }, []);
 
   const firstPage = offset === 0 ? true : false;
 
